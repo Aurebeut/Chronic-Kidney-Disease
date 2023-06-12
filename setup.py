@@ -17,10 +17,12 @@ setup(
     url='https://github.com/Aurebeut/chronic-kidney-disease',
     extras_require={
         'notebook': [
-            'liac-arff~=2.5.0'
+            'ipywidgets~=8.0.6',
+            'liac-arff~=2.5.0',
             'openpyxl~=3.0.7',
             'pandas~=1.5',
             'scipy~=1.10.1',
+            'ydata-profiling~=4.2.0',
         ]
     },
 )
