@@ -1,0 +1,74 @@
+import pandas as pd
+import argparse
+import sys
+from src.dataprocessing import preprocess
+
+
+def main(argv=sys.argv[1:]):
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--input",
+        "-i",
+        required=True,
+        help="Path towards the input file in excel format",
+        type=str,
+    )
+    parser.add_argument(
+        "--target-col",
+        "-t",
+        required=True,
+        type=str,
+        help='Column containing the target column to predict',
+    )
+    args = parser.parse_args(argv)
+    #read the file
+    df=pd.read_excel(args.input)
+
+    #renaming columns for understanding purposes
+    new_column_names = {
+        'age': 'Age',
+        'bp': 'BloodPressure',
+        'sg': 'SpecificGravity',
+        'al': 'Albumin',
+        'su': 'Sugar',
+        'rbc': 'RedBloodCells',
+        'pc': 'PusCell',
+        'pcc': 'PusCellClumps',
+        'ba': 'Bacteria',
+        'bgr': 'BloodGlucoseRandom',
+        'bu': 'BloodUrea',
+        'sc': 'SerumCreatinine',
+        'sod': 'Sodium',
+        'pot': 'Potassium',
+        'hemo': 'Hemoglobin',
+        'pcv': 'PackedCellVolume',
+        'wc': 'WhiteBloodCellCount',
+        'rc': 'RedBloodCellCount',
+        'htn': 'Hypertension',
+        'dm': 'DiabetesMellitus',
+        'cad': 'CoronaryArteryDisease',
+        'appet': 'Appetite',
+        'pe': 'PedalEdema',
+        'ane': 'Anemia',
+        'class': 'Class'
+    }
+    df = df.rename(columns=new_column_names)
+
+    #defining the categorical/numerical variables
+    cols_numerical = ["Age", "BloodPressure", "SpecificGravity", "Albumin", "Sugar", "BloodGlucoseRandom", "BloodUrea", "SerumCreatinine", "Sodium", "Potassium", "Hemoglobin", "PackedCellVolume", "WhiteBloodCellCount", "RedBloodCellCount"]
+    cols_categorical = ["RedBloodCells", "PusCell", "PusCellClumps", "Bacteria", "Hypertension", "DiabetesMellitus", "CoronaryArteryDisease", "Appetite", "PedalEdema", "Anemia"]
+    cols_of_variables = [j for i in [cols_numerical, cols_categorical] for j in i]
+    target_col = args.target_col
+
+    #preprocess variables
+    df[target_col] = [preprocess.clean_variables(x) for x in df[target_col]]
+    
+    #Impute the missing data
+
+    #Scale/standardize before applying any model
+
+    #Train and run the models
+
+    #Give results
+
+
