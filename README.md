@@ -6,6 +6,10 @@ The 2 goals are :
 1. Determine risk factors for CKD
 2. Determine potential CKD subtypes.
 
+# Context
+After a small research on about CKD, we can find that the main risk factors can be age, diabetes (related with glucose).
+
+
 # Notebooks
 The notebooks are used for Exploratory Data Analysis, to understand what's behind the dataset, and what are the available informations.
 Details are the Notebook itself, but main take away points :
