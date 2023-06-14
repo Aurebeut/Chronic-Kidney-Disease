@@ -1,5 +1,6 @@
 import re
 import numpy as np
+import pandas as pd
 
 def clean_variables(var):
     """Preprocess to handle missing values, ?, nan and variables with trailing tabs/spaces.
@@ -21,3 +22,13 @@ def clean_variables(var):
     if var == "":
         var = np.nan
     return var
+
+
+def impute_mode(df, col_name):
+    df[col_name].fillna(df[col_name].mode()[0], inplace=True)
+    return df[col_name]
+
+def impute_mean(df, col_name):
+    df[col_name] = df[col_name].apply(pd.to_numeric)
+    df[col_name].fillna(df[col_name].mean(), inplace=True)
+    return df[col_name]
