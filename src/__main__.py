@@ -23,10 +23,20 @@ def main(argv=sys.argv[1:]):
         type=str,
         help='Column containing the target column to predict',
     )
+    parser.add_argument(
+        "--algorithm-task",
+        "-t",
+        required=True,
+        type=str,
+        help='Type of task needed : possible options are classification or clustering. Any other string won\'t be accpted as input',
+    )
     args = parser.parse_args(argv)
+
     #read the file
+    print("Loading the file ...")
     df=pd.read_excel(args.input)
 
+    print("Preprocessing the file ...")
     #renaming columns for clarity purposes
     new_column_names = {
         'age': 'Age',
@@ -58,6 +68,7 @@ def main(argv=sys.argv[1:]):
     df = df.rename(columns=new_column_names)
 
     #defining the categorical/numerical variables
+    #maybe automatically detect type of column?
     cols_numerical = ["Age", "BloodPressure", "SpecificGravity", "Albumin", "Sugar", "BloodGlucoseRandom", "BloodUrea", "SerumCreatinine", "Sodium", "Potassium", "Hemoglobin", "PackedCellVolume", "WhiteBloodCellCount", "RedBloodCellCount"]
     cols_categorical = ["RedBloodCells", "PusCell", "PusCellClumps", "Bacteria", "Hypertension", "DiabetesMellitus", "CoronaryArteryDisease", "Appetite", "PedalEdema", "Anemia"]
     cols_of_variables = [j for i in [cols_numerical, cols_categorical] for j in i]
@@ -78,10 +89,14 @@ def main(argv=sys.argv[1:]):
 
     #Scale/standardize before applying any model
     X, y = shuffle(X, y, random_state=RANDOM_STATE)
-    X_train, X_test, y_train, y_test = train_test_split(X, y,test_size = 0.3, random_state = RANDOM_STATE)
-    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = RANDOM_STATE)
+
+    print("Training the models ...")
+
     #Train and run the models
 
-    #Give results
+    #Save the model to a pickle file
 
+    #Display feature importance
 
+    #Give results and the "best" model selected
