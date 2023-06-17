@@ -6,7 +6,6 @@ from sklearn.metrics import classification_report, accuracy_score
 
 def logistic_regression(X_train, y_train, X_test) :
     logistic_model = LogisticRegression()
-    print("fitting model")
     logistic_model.fit(X_train, y_train)
     y_pred = logistic_model.predict(X_test)
     # Get the coefficients for each feature
@@ -15,10 +14,10 @@ def logistic_regression(X_train, y_train, X_test) :
     print(feature_coefficients)
     return y_pred, logistic_model
 
-def xgboost_classification(X, y) :
+def xgboost_classification(X_train, y_train, X_test) :
     xgb_model = xgb.XGBClassifier()
-    xgb_model.fit(X, y)
-    y_pred = xgb_model.predict(X)
+    xgb_model.fit(X_train, y_train)
+    y_pred = xgb_model.predict(X_test)
     return y_pred, xgb_model
 
 
