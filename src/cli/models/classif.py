@@ -4,12 +4,13 @@ import xgboost as xgb
 from sklearn.metrics import classification_report, accuracy_score
 
 
-def logistic_regression(X, y) :
+def logistic_regression(X_train, y_train, X_test) :
     logistic_model = LogisticRegression()
-    logistic_model.fit(X, y)
-    y_pred = logistic_model.predict(X)
+    print("fitting model")
+    logistic_model.fit(X_train, y_train)
+    y_pred = logistic_model.predict(X_test)
     # Get the coefficients for each feature
-    feature_coefficients = pd.DataFrame({'Feature': X.columns, 'Coefficient': logistic_model.coef_[0]})
+    feature_coefficients = pd.DataFrame({'Feature': X_train.columns, 'Coefficient': logistic_model.coef_[0]})
     # Print the feature coefficients
     print(feature_coefficients)
     return y_pred, logistic_model
@@ -21,8 +22,7 @@ def xgboost_classification(X, y) :
     return y_pred, xgb_model
 
 
-def model_evaluation(y_train, y_pred) :
+def model_evaluation(y_test, y_pred) :
     print("Classification Report:")
-    print(classification_report(y_train, y_pred))
-    print("Accuracy:", accuracy_score(y_train, y_pred))
-    
+    print(classification_report(y_test, y_pred))
+    print("Accuracy:", accuracy_score(y_test, y_pred))
