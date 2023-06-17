@@ -19,7 +19,9 @@ Details are the Notebook itself, but main take away points :
 - The target variable is quite balanced, with a 
 
 # How to execute
-TDB
+'''bash
+python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "classification"
+'''
 
 # Tests
 In order to have a tested code, some functionalities of the code (like preprocessing) are checked with unit testing, to ensure that our functions are behaving as expected, in case we make any changes one day.
