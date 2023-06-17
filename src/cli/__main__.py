@@ -120,5 +120,9 @@ def main(argv=sys.argv[1:]):
     if args.algorithm_task == "clustering":
         print("Clustering")
 
+    # Tune parameters
+    # Do the clustering
+    # Interpret results
+
 if __name__ == "__main__":
     main()
