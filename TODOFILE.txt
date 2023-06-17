@@ -1,7 +1,11 @@
 # TO DO :
 - test different value imputation methods (mean, sklearn rdy to use solution, categorical (kkn)?)
-- deal with categorical variables = As all of the categorical columns have 2 categories we can use label encoder
 - check for k-cross validation would be better
-- check build train/test dataset
 - write unit test functions for preprocess of the data
+
+
+DONE :
 - check biblio causes of CKD
+- deal with categorical variables = As all of the categorical columns have 2 categories we can use label encoder
+- check build train/test dataset
+

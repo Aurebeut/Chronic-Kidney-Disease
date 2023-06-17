@@ -1,10 +1,9 @@
 import pandas as pd
 import argparse
 import sys
-from src.dataprocessing import preprocess
+from src.cli.dataprocessing import preprocess
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
-
 RANDOM_STATE = 7
 
 def main(argv=sys.argv[1:]):
@@ -25,7 +24,7 @@ def main(argv=sys.argv[1:]):
     )
     parser.add_argument(
         "--algorithm-task",
-        "-t",
+        "-a",
         required=True,
         type=str,
         help='Type of task needed : possible options are classification or clustering. Any other string won\'t be accpted as input',
@@ -100,3 +99,6 @@ def main(argv=sys.argv[1:]):
     #Display feature importance
 
     #Give results and the "best" model selected
+
+if __name__ == "__main__":
+    main()
