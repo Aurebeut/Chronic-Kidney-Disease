@@ -84,13 +84,18 @@ def k_means_clustering(
                 mean_value = new_df[new_df["Cluster Labels"] == cluster_of_interest][
                     numerical_var
                 ].mean()
-                results_df = results_df.append(
-                    {
-                        "Variable": numerical_var,
-                        "P-Value": p_value,
-                        "Cluster": cluster_of_interest,
-                        "Mean/Mode": mean_value,
-                    },
+                results_df = pd.concat(
+                    [
+                        results_df,
+                        pd.DataFrame(
+                            {
+                                "Variable": [numerical_var],
+                                "P-Value": [p_value],
+                                "Cluster": [cluster_of_interest],
+                                "Mean/Mode": [mean_value],
+                            }
+                        ),
+                    ],
                     ignore_index=True,
                 )
 
