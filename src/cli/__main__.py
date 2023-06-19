@@ -5,7 +5,7 @@ from src.cli.dataprocessing import preprocess
 from src.cli.models import classif, clustering
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 import pickle
 from datetime import date
 
@@ -136,9 +136,9 @@ def main(argv=sys.argv[1:]):
         )
 
         # Scale/standardize before applying any model
-        # scaler = StandardScaler()
-        # X_train[cols_numerical] = scaler.fit_transform(X_train[cols_numerical])
-        # X_test[cols_numerical] = scaler.transform(X_test[cols_numerical])
+        scaler = StandardScaler()
+        X_train[cols_numerical] = scaler.fit_transform(X_train[cols_numerical])
+        X_test[cols_numerical] = scaler.transform(X_test[cols_numerical])
 
         encoder = LabelEncoder()
         X_train[cols_categorical] = X_train[cols_categorical].apply(
@@ -148,34 +148,10 @@ def main(argv=sys.argv[1:]):
             lambda col: encoder.fit_transform(col)
         )
 
-        print("Classification model running ...")
-        import numpy as np
-        import statsmodels.api as sm
+        y_pred, model = classif.xgboost_classification(X_train, y_train, X_test)
+        classif.model_evaluation(y_test, y_pred)
 
-        X_train = sm.add_constant(X_train)
-
-        # Fit the logistic regression model
-        logit_model = sm.Logit(y_train, X_train)
-        logit_result = logit_model.fit()
-
-        # Print model summary
-        print(logit_result.summary())
-
-        # Get the predicted probabilities for the test set
-        X_test = sm.add_constant(X_test)
-        y_pred_logistic = logit_result.predict(X_test)
-
-        # Convert predicted probabilities to class labels (0 or 1)
-        y_pred_logistic = np.where(y_pred_logistic >= 0.5, 1, 0)
-        print(y_pred_logistic)
-        # Compute accuracy score
-        accuracy = np.mean(y_pred_logistic == y_test)
-        print("Accuracy:", accuracy)
-
-        # y_pred_logistic, model = classif.logistic_regression(X_train, y_train, X_test)
-        # classif.model_evaluation(y_test, y_pred_logistic)
         # # Save the model to a pickle file
-
         if args.save_model:
             filename = f"{args.algorithm_task}_model.pkl"
             pickle.dump(model, open(filename, "wb"))
@@ -214,6 +190,7 @@ def main(argv=sys.argv[1:]):
             X, cols_numerical, cols_categorical, nb_clusters, RANDOM_STATE, 0.01
         )
         print(results_df_signif)
+
     else:
         print(
             "Please provide a correct argument for algorithm_task, either 'classification' or 'clustering'"
