@@ -54,7 +54,7 @@ python -m pytest
 For this task, I have trained a XGBoost model for classification, on the original dataset with 70% used for training and 30% for evaluation. MIssing values have been imputed by the mean/mode, for numerical/categorical variables.
 CLI used for reproducibility :
 ```bash
-python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "classification"
+python -m src.cli --input ".\chronic-kidney-disease\data\chronic_kidney_disease_full.xlsx" -t "Class" -a "classification"
 ```
 An XGBoost classifier allows us to define the most important features to understand the causes of the CKD.
 
@@ -107,7 +107,7 @@ Our model achieves an Accuracy of 0.98 for predicting the CKD.
 For this task, I have used a clustering algorithm called K-means to group the people having a CKD and see if there were some groups in this population, and discover subtypes of CKD.
 CLI used :
 ```bash
-python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "clustering"
+python -m src.cli --input ".\chronic-kidney-disease\data\chronic_kidney_disease_full.xlsx" -t "Class" -a "clustering"
 ```
 
 From the elbow curve displayed, we choose 3 clusters and deduce the following results. We interpret significant variables only, at a threshold of 0.99 for the p-value.
