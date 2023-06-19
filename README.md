@@ -71,3 +71,29 @@ Our model achieves an Accuracy of 0.98 for predicting the CKD.
 
 # 2. Subtypes of CKD
 For this task, I have used a clustering algorithm called K-means to group the people having a CKD and see if there were some groups in this population, and discover subtypes of CKD.
+CLI used :
+'''bash
+python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "clustering"
+'''
+
+From the elbow curve displayed, we choose 3 clusters and deduce the following results. We interpret significant variables only, at a threshold of 0.99 for the p-value.
+               Variable       P-Value Cluster     Mean/Mode
+                Sodium  3.431283e-03       0    130.462093
+   WhiteBloodCellCount  9.565631e-29       0   5868.421053
+               PusCell  7.562666e-03       0      1.000000
+             BloodUrea  2.884129e-03       1     65.393533
+                Sodium  1.596533e-03       1    135.220000
+            Hemoglobin  1.464878e-03       1     10.905669
+      PackedCellVolume  8.683747e-03       1     33.606932
+   WhiteBloodCellCount  3.648662e-03       1   9402.194891
+     RedBloodCellCount  2.199797e-03       1      4.022463
+               PusCell  7.562666e-03       1      1.000000
+   WhiteBloodCellCount  3.841947e-37       2  15972.222222
+               PusCell  7.562666e-03       2      0.000000
+
+From the table above, and when comparing with the EDA we did in the first notebook, there seem to be 3 sub-types of CKD :
+
+- One related with abnormal PusCells, a low number of White Cells, and a low concetration of Sodium.
+- One related with a high concentration of blood urea, and higher concentration of Sodium, Hemoglobin, white and red blood cells.
+- One related with a very low number of White Blood cells.
+
