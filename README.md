@@ -53,7 +53,7 @@ In order to have a tested code, some functionalities of the code (like preproces
 This tests can be launched the following way :
 
 '''bash
-TBD
+python -m pytest
 '''
 
 # 1. risk factors for CKD 
