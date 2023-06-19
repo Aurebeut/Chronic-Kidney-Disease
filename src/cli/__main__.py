@@ -5,12 +5,9 @@ from src.cli.dataprocessing import preprocess
 from src.cli.models import classif, clustering
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 import pickle
-import os
 from datetime import date
-from sklearn.cluster import KMeans
 
 RANDOM_STATE = 7
 
@@ -214,7 +211,7 @@ def main(argv=sys.argv[1:]):
 
         # Clustering part
         results_df_signif = clustering.k_means_clustering(
-            X, cols_numerical, cols_categorical, nb_clusters, RANDOM_STATE
+            X, cols_numerical, cols_categorical, nb_clusters, RANDOM_STATE, 0.01
         )
         print(results_df_signif)
     else:
