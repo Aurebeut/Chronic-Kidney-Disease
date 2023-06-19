@@ -35,13 +35,6 @@ def main(argv=sys.argv[1:]):
         type=str,
         help="Type of task needed : possible options are classification or clustering. Any other string won't be accpted as input",
     )
-    parser.add_argument(
-        "--save-model",
-        "-s",
-        action="store_true",
-        default=None,
-        help="Flag to save your model in a pickle file, stored at the root of the repository.",
-    )
     args = parser.parse_args(argv)
 
     # read the file
@@ -151,13 +144,6 @@ def main(argv=sys.argv[1:]):
         y_pred, model = classif.xgboost_classification(X_train, y_train, X_test)
         classif.model_evaluation(y_test, y_pred)
 
-        # # Save the model to a pickle file
-        if args.save_model:
-            filename = f"{args.algorithm_task}_model.pkl"
-            pickle.dump(model, open(filename, "wb"))
-            with open(f"{args.algorithm_task}_{date.today()}.pkl", "wb") as file:
-                pickle.dump(model, file)
-
     elif args.algorithm_task == "clustering":
         # As we want to identify the sub types ok CKD, it's better focusing on CKD people only
         df_ckd = df[df[target_col] == 1]
@@ -190,7 +176,6 @@ def main(argv=sys.argv[1:]):
             X, cols_numerical, cols_categorical, nb_clusters, RANDOM_STATE, 0.01
         )
         print(results_df_signif)
-
     else:
         print(
             "Please provide a correct argument for algorithm_task, either 'classification' or 'clustering'"
