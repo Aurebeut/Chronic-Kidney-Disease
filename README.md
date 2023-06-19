@@ -37,15 +37,9 @@ Once all setup,
 python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "classification"
 '''
 
-CLI Helpers (can run "python -m src.cli -h" to see that)
-'''
-  -h, --help            show this help message and exit
-  --input INPUT, -i INPUT
-                        Path towards the input file in excel format
-  --target-col TARGET_COL, -t TARGET_COL
-                        Column containing the target column to predict
-  --algorithm-task ALGORITHM_TASK, -a ALGORITHM_TASK
-                        Type of task needed : possible options are classification or clustering. Any other string won't be accpted as input
+To see CLI Helpers do the following :
+'''bash
+python -m src.cli -h
 '''
 
 # Tests
