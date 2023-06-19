@@ -22,40 +22,40 @@ Second notebook (EDA.ipynb) was used for exploration of the data and of the vari
 ## Main script and how to execute
 Application has been developed with Python 3.9.13.
 The script is a CLI executable, and necessary packages can be installed this way :
-'''bash
+```bash
 pip install .
-'''
+```
 
 Is you also want to run not only the source application, but also the exploratory notebooks, you can do the following way :
-'''bash
+```bash
 pip install .[notebook]
-'''
+```
 
 
 Once all setup,
-'''bash
+```bash
 python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "classification"
-'''
+```
 
 To see CLI Helpers do the following :
-'''bash
+```bash
 python -m src.cli -h
-'''
+```
 
 # Tests
 In order to have a tested code, some functionalities of the code (like preprocessing) are checked with unit testing, to ensure that our functions are behaving as expected, in case we make any changes one day.
 This tests can be launched the following way :
 
-'''bash
+```bash
 python -m pytest
-'''
+```
 
 # 1. risk factors for CKD 
 For this task, I have trained a XGBoost model for classification, on the original dataset with 70% used for training and 30% for evaluation. MIssing values have been imputed by the mean/mode, for numerical/categorical variables.
 CLI used for reproducibility :
-'''bash
+```bash
 python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "classification"
-'''
+```
 An XGBoost classifier allows us to define the most important features to understand the causes of the CKD.
 
 
@@ -105,9 +105,9 @@ Our model achieves an Accuracy of 0.98 for predicting the CKD.
 # 2. Subtypes of CKD
 For this task, I have used a clustering algorithm called K-means to group the people having a CKD and see if there were some groups in this population, and discover subtypes of CKD.
 CLI used :
-'''bash
+```bash
 python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "clustering"
-'''
+```
 
 From the elbow curve displayed, we choose 3 clusters and deduce the following results. We interpret significant variables only, at a threshold of 0.99 for the p-value.
                Variable       P-Value Cluster     Mean/Mode
