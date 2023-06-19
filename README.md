@@ -51,8 +51,41 @@ python -m pytest
 '''
 
 # 1. risk factors for CKD 
-For this task, I have trained a Logistic Regression model for classification, on the original dataset with 70% used for training and 30% for evaluation. MIssing values have been imputed by the mean/mode, for numerical/categorical variables.
-A Logistic Regression allows us to have interpretable results to understand the causes of the CKD, and measure the impact of each variable on the probability of heaving a CKD.
+For this task, I have trained a XGBoost model for classification, on the original dataset with 70% used for training and 30% for evaluation. MIssing values have been imputed by the mean/mode, for numerical/categorical variables.
+CLI used for reproducibility :
+'''bash
+python -m src.cli --input "C:\Users\devil\Documents\Data_Science\CDK_project\01.RAW_DATA\Chronic_Kidney_Disease\chronic_kidney_disease_full.xlsx" -t "Class" -a "classification"
+'''
+An XGBoost classifier allows us to define the most important features to understand the causes of the CKD.
+
+
+
+Here are the features importances :
+                Feature  Mean (class=1)  Mean (class=0)       P-Value
+0                   Age        0.190294       -0.303060  4.906974e-05
+1         BloodPressure        0.267364       -0.425801  6.981745e-09
+2       SpecificGravity       -0.561771        0.894672  4.670483e-44
+3               Albumin        0.487857       -0.776958  1.327538e-30
+4    BloodGlucoseRandom        0.313847       -0.499831  5.930627e-12
+5             BloodUrea        0.283322       -0.451217  7.228765e-10
+6       SerumCreatinine        0.308416       -0.491181  1.460528e-11
+7                Sodium       -0.352575        0.561508  5.097756e-15
+8            Hemoglobin       -0.577095        0.919077  1.537435e-47
+9      PackedCellVolume       -0.544022        0.866405  2.303023e-40
+10  WhiteBloodCellCount        0.135916       -0.216458  3.993840e-03
+11    RedBloodCellCount       -0.459832        0.732325  1.337632e-26
+12         Hypertension        0.587209        0.000000  3.139888e-28
+
+
+We can deduce that :
+- Older people have more chances to get CKD.
+- A high blood pressure (and hypertension) / Albumin / Blood Glucose / Blood Urea / SerumCreatinine  is correlated with CKD.
+- A low Specific Gravity / Glucose in blood / Sodium in blood / Hemoglobin / is correlated with CKD.
+- A low volume of Packed cells and Red Blood Cells is correlated with CKD.
+- A High volume of White blood cells is correlated with CKD.
+- Presence of 
+
+
 
 Classification Report:
               precision    recall  f1-score   support
