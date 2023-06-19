@@ -11,6 +11,7 @@ setup(
         "numpy~=1.23.3",
         "pandas~=1.5.3",
         "scikit-learn~=1.2.2",
+        "xgboost~=1.7.6",
     ],
     extras_require={
         "notebook": [
