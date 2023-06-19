@@ -1,7 +1,7 @@
-from src.cli.dataprocessing import preprocess
-import pandas as pd
 import numpy as np
+import pandas as pd
 
+from src.cli.dataprocessing import preprocess
 
 # def test_clean_variables():
 #     X = pd.DataFrame(

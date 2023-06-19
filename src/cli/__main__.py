@@ -1,13 +1,15 @@
-import pandas as pd
 import argparse
+import pickle
 import sys
-from src.cli.dataprocessing import preprocess
-from src.cli.models import classif, clustering
-from sklearn.utils import shuffle
+from datetime import date
+
+import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-import pickle
-from datetime import date
+from sklearn.utils import shuffle
+
+from src.cli.dataprocessing import preprocess
+from src.cli.models import classif, clustering
 
 RANDOM_STATE = 7
 

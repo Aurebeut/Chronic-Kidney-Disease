@@ -1,6 +1,5 @@
 from setuptools import find_packages, setup
 
-
 setup(
     name="chronic-kidney-disease",
     author="Aurélien D.",

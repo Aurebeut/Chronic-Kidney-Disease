@@ -1,9 +1,8 @@
-from sklearn.linear_model import LogisticRegression
-import pandas as pd
-from sklearn.metrics import classification_report, accuracy_score
-from xgboost import XGBClassifier
 import pandas as pd
 from scipy.stats import ttest_ind
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+from xgboost import XGBClassifier
 
 
 def logistic_regression(X_train, y_train, X_test):
