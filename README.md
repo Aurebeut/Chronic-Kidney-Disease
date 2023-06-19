@@ -1,7 +1,7 @@
 # Context
-This repository contains material for Chronic Kidney Disease classification, using machine learning technics.
-=> ADD DEFINITION OF CDK
-This project is based using the dataset from the (UCI)[https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease] database.
+This repository contains material for Chronic Kidney Disease classification, using machine learning technics. 
+Chronic kidney disease (CKD) is a long-term condition characterized by a gradual loss of kidney function over time
+This project is based using the dataset from the [UCI](https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease) database.
 The 2 goals are :
 1. Determine risk factors for CKD
 2. Determine potential CKD subtypes.
