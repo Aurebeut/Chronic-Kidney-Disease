@@ -80,11 +80,11 @@ Here are the features importances :
 
 We can deduce that :
 - Older people have more chances to get CKD.
-- A high blood pressure (and hypertension) / Albumin / Blood Glucose / Blood Urea / SerumCreatinine  is correlated with CKD.
-- A low Specific Gravity / Glucose in blood / Sodium in blood / Hemoglobin / is correlated with CKD.
+- A high blood pressure / Albumin / Blood Glucose / Blood Urea / SerumCreatinine is correlated with CKD.
+- A low Specific Gravity / Sodium in blood / Hemoglobin / is correlated with CKD.
 - A low volume of Packed cells and Red Blood Cells is correlated with CKD.
 - A High volume of White blood cells is correlated with CKD.
-- Presence of 
+- Presence of hypertension.
 
 
 
